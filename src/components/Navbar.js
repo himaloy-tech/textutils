@@ -4,17 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 export default function Navbar(props) {
     const location = useLocation();
     const activeClass = (route) => { return location.pathname === route ? "active" : "" };
-    var color;
-    if (props.mode === 'dark'){
-        color = 'light';
-    }
-    else{
-        color = 'dark';
-    }
     return (
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">{props.title}</Link>
+                <Link className="navbar-brand" to="/">
+                    <img src="../favicon.ico" alt="logo" className="d-inline-block align-text-top" style={{ marginRight: '10px', width: '33px' }} />
+                    {props.title}
+                </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -27,12 +23,12 @@ export default function Navbar(props) {
                             <Link className={`nav-link ${activeClass('/about')}`} aria-current="page" to="/about">About</Link>
                         </li>
                     </ul>
-                    <div className="form-check form-switch">
+                    <div className="form-switch" style={{marginRigth: '5px'}}>
                         <input className="form-check-input" type="checkbox" id="switch" onClick={props.toggleMode} />
-                        <label className={`form-check-label text-${color}`} htmlFor="switch">Dark Mode</label>
+                        <label className={`form-check-label text-${props.mode === 'dark' ? 'light' : 'dark'}`} htmlFor="switch">Dark Mode</label>
                     </div>
                 </div>
             </div>
         </nav>
-            )
+    )
 }
