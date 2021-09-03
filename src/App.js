@@ -46,7 +46,7 @@ function App() {
     <>
       <Router>
         <div style={{ height: '50px' }}>
-          <Navbar title="TextUtils" mode={Mode} toggleMode={toggleMode} />
+          <Navbar title="Text Utility" mode={Mode} toggleMode={toggleMode} />
         </div>
         <Modal show={alert ? true : false} onHide={() => {setAlert(false)}}>
           <Modal.Header closeButton>
