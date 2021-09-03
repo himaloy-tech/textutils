@@ -45,16 +45,16 @@ function App() {
   return (
     <>
       <Router>
-        <div style={{ height: '50px' }}>
+        <div style={{ height: '50px', zIndex: '2', position: 'relative' }}>
           <Navbar title="Text Utility" mode={Mode} toggleMode={toggleMode} />
         </div>
-        <Modal show={alert ? true : false} onHide={() => {setAlert(false)}}>
+        <Modal show={alert ? true : false} onHide={() => { setAlert(false) }}>
           <Modal.Header closeButton>
             <Modal.Title><strong><div className="text-center">{capitalize(alert ? alert.type : "")}</div></strong></Modal.Title>
           </Modal.Header>
           <Modal.Body><div className="text-center">{alert ? alert.message : ""}</div></Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={() => {setAlert(false)}}>
+            <Button variant="secondary" onClick={() => { setAlert(false) }}>
               Close
             </Button>
           </Modal.Footer>
