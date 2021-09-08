@@ -1,8 +1,7 @@
 body, nav{
     transition: all 0.5s linear;
 }
-
-.btn:focus, #switch:focus{
-    outline: none;
-    box-shadow: none;
+.preview-text
+{
+    white-space:pre-wrap;
 }

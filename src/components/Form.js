@@ -26,12 +26,11 @@ export default function TextForm(props) {
 
     const handleOnChange = (event) => {
         setText(event.target.value);
-        setText(event.target.value);
     }
 
     const removeSpace = () => {
         var temText = '';
-        var textSplit = text.split(" ");
+        var textSplit = text.split(/s+/);
         for (var i = 0; i < textSplit.length; i++) {
             temText += textSplit[i];
         }
@@ -58,9 +57,9 @@ export default function TextForm(props) {
     return (
         <>
             <div className={`container`}>
-                <h1 className={`text-${props.mode === 'dark' ? 'light' : 'dark'}`}>{props.heading}</h1>
+                <h1 className={`text-${props.mode === 'dark' ? 'light' : 'dark'} text-center`}>{props.heading}</h1>
                 <div className="mb-3">
-                    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+                    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" placeholder="Enter Text"></textarea>
                 </div>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
@@ -70,10 +69,10 @@ export default function TextForm(props) {
             </div>
             <div className={`container my-3 text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
                 <h2>Your text summary</h2>
-                <p>{word()} words and {text.length} characters</p>
-                <p>{text.length === 0 ? 0 : 0.004 * text.split(/\s+/).length} Minutes reading time</p>
+                <p>{word()} words and {text.replace(/\r\n|\n|\r/gm, "").length} characters</p>
+                <p>{0.008 *  text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Minutes reading time</p>
                 <h2>Text Preview</h2>
-                <p>{text.length === 0 ? 'Enter text to text' : text}</p>
+                <p className="preview-text">{text.length === 0 ? 'Enter text to preview' : text}</p>
             </div>
         </>
     )

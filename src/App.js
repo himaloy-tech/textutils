@@ -23,7 +23,7 @@ function App() {
     });
     setTimeout(() => {
       setAlert(false);
-    }, 2000);
+    }, 1000);
   };
 
   const toggleMode = () => {
@@ -61,11 +61,11 @@ function App() {
         </Modal>
         <div className="container my-3">
           <Switch>
-            <Route exact path="/about">
-              <About />
-            </Route>
             <Route exact path="/">
               <Form heading="Text" mode={Mode} showAlert={showAlert} />
+            </Route>
+            <Route exact path="/about">
+              <About />
             </Route>
           </Switch>
         </div>
